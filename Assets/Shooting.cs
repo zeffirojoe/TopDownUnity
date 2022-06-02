@@ -10,10 +10,24 @@ public class Shooting : MonoBehaviour
 
     public float bulletForce = 4f;
 
+    void Start()
+    {
+        StartCoroutine(ShootingCoroutine());   
+    }
+
     void OnFire()
     {
         Debug.Log("Fire");
         Shoot();
+    }
+
+    IEnumerator ShootingCoroutine()
+    {
+        for (;;)
+        {
+            Shoot();
+            yield return new WaitForSeconds(2.0f);
+        }
     }
 
     void Shoot()
